@@ -1,5 +1,6 @@
 package Game;
 
+import Characters.StickFigure;
 import Control.Levels;
 import javafx.scene.Cursor;
 import javafx.scene.Group;
@@ -54,8 +55,9 @@ public class StartBackground {
 
         startScene.setCursor(Cursor.HAND);
 
-        //This is how you start the game
+        //This is how you start the game. Start with 3 lives.
         startScene.setOnMouseClicked((MouseEvent event) -> Levels.setLevel(Levels.LEVEL1));
+        StickFigure.setLives(3);
 
         title.relocate((SCENE_WIDTH - title.getWidth()) / 2, SCENE_HEIGHT / 4);
         subtitle.relocate((SCENE_WIDTH - subtitle.getWidth()) / 2,

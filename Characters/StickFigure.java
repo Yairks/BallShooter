@@ -36,10 +36,11 @@ public class StickFigure {
     public final static int WIDTH = 100;
     public final static int HEIGHT = 160;
     private Shot shot;
-    private int lives;
+    private static int lives;
     private long invincibleTime;
 
     public StickFigure() {
+
         //Initialize the List which will hold all 4 images
         images = new ArrayList<>();
 
@@ -90,7 +91,6 @@ public class StickFigure {
         }
 
         shoot(0, 0, true);
-        lives = 3;
         invincibleTime = -3000000000L;
         invincible = false;
     }
@@ -318,4 +318,8 @@ public class StickFigure {
     public double getGlobalYPosition() { return globalYPosition; }
     public String getCurrentDirection() { return currentdirection; }
     public boolean isDead() { return lives <= 0; }
+    public static int getLives() { return lives; }
+    public static void setLives(int lives) {
+        StickFigure.lives = lives;
+    }
 }

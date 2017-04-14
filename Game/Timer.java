@@ -100,8 +100,7 @@ class Timer extends AnimationTimer {
             if(enemy.hitStickFigure(stickFigure) && !stickFigure.isInvincible()) {
 
                 //The player loses a life.
-                stickFigure.loseALife();
-                LevelGenerator.gameOver();
+                LevelGenerator.loseALife();
             }
         }
 

@@ -28,14 +28,8 @@ import Game.GameBackground;
  * Created by Yair on 2/18/2017.
  */
 public class Game extends Application {
-    private static Group rootnode;
-    private static Scene startScene, gameScene;
-    private static GameBackground gameBackground;
-    private static StickFigure stickFigure;
-    private static List<Enemy> enemies;
     public static final int SCENE_WIDTH = 600;
     public static final int SCENE_HEIGHT = 600;
-    private static Timer timer;
     private static Stage stage;
 
     public static void main(String[] args) {
