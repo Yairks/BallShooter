@@ -22,6 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+import java.awt.*;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -47,7 +48,7 @@ public class GameBackground {
         canvas = new Canvas(Game.SCENE_WIDTH, Game.SCENE_HEIGHT);
         gc = canvas.getGraphicsContext2D();
 
-        background = new Image("file:C:\\Users\\Yair\\Documents\\StickFigure\\Background.png");
+        background = new Image(getClass().getResourceAsStream("/StickFigures/Background.png"));
 
         globalXPosition = globalYPosition = 200;
 
@@ -122,7 +123,7 @@ public class GameBackground {
         livesBar.setPrefHeight(20);
         livesBar.relocate(0, CANVAS_HEIGHT - StickFigure.HEIGHT / 4);
 
-        Image miniSF = new Image("file:C:\\Users\\Yair\\Documents\\StickFigure\\1.png");
+        Image miniSF = new Image(getClass().getResourceAsStream("/StickFigures/1.png"));
 
         for(int i = 0; i < StickFigure.getLives(); i++) {
             ImageView life = new ImageView(miniSF);

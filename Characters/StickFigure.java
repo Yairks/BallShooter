@@ -46,18 +46,18 @@ public class StickFigure {
 
         Image image;
         //Load the image and put it in the List.
-        image = new Image("file:C:\\Users\\Yair\\Documents\\StickFigure\\1.png");
+        image = new Image(getClass().getResourceAsStream("/StickFigures/1.png"));
         images.add(image);
 
         //Repeat with the other images
-        image = new Image("file:C:\\Users\\Yair\\Documents\\StickFigure\\2.png");
+        image = new Image(getClass().getResourceAsStream("/StickFigures/1.png"));
         images.add(image);
 
-        image = new Image("file:C:\\Users\\Yair\\Documents\\StickFigure\\3.png");
+        image = new Image(getClass().getResourceAsStream("/StickFigures/3.png"));
         images.add(image);
 
         //This image is the same as the second, because it's easier this way.
-        image = new Image("file:C:\\Users\\Yair\\Documents\\StickFigure\\2.png");
+        image = new Image(getClass().getResourceAsStream("/StickFigures/2.png"));
         images.add(image);
 
         //The Iterator keeps track of which Image we are up to.
