@@ -36,27 +36,28 @@ public class StickFigure {
     public final static int WIDTH = 100;
     public final static int HEIGHT = 160;
     private Shot shot;
-    private int lives;
+    private static int lives;
     private long invincibleTime;
 
     public StickFigure() {
+
         //Initialize the List which will hold all 4 images
         images = new ArrayList<>();
 
         Image image;
         //Load the image and put it in the List.
-        image = new Image("file:C:\\Users\\Yair\\Documents\\StickFigure\\1.png");
+        image = new Image(getClass().getResourceAsStream("/StickFigures/1.png"));
         images.add(image);
 
         //Repeat with the other images
-        image = new Image("file:C:\\Users\\Yair\\Documents\\StickFigure\\2.png");
+        image = new Image(getClass().getResourceAsStream("/StickFigures/1.png"));
         images.add(image);
 
-        image = new Image("file:C:\\Users\\Yair\\Documents\\StickFigure\\3.png");
+        image = new Image(getClass().getResourceAsStream("/StickFigures/3.png"));
         images.add(image);
 
         //This image is the same as the second, because it's easier this way.
-        image = new Image("file:C:\\Users\\Yair\\Documents\\StickFigure\\2.png");
+        image = new Image(getClass().getResourceAsStream("/StickFigures/2.png"));
         images.add(image);
 
         //The Iterator keeps track of which Image we are up to.
@@ -90,7 +91,6 @@ public class StickFigure {
         }
 
         shoot(0, 0, true);
-        lives = 3;
         invincibleTime = -3000000000L;
         invincible = false;
     }
@@ -318,4 +318,8 @@ public class StickFigure {
     public double getGlobalYPosition() { return globalYPosition; }
     public String getCurrentDirection() { return currentdirection; }
     public boolean isDead() { return lives <= 0; }
+    public static int getLives() { return lives; }
+    public static void setLives(int lives) {
+        StickFigure.lives = lives;
+    }
 }

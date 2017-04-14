@@ -81,7 +81,8 @@ public class LevelGenerator {
 
         //Put the gameBackground Canvas into a group
         rootnode = new Group();
-        rootnode.getChildren().addAll(gameBackground.getCanvas(), gameBackground.getGameBar(), countdown);
+        rootnode.getChildren().addAll(gameBackground.getCanvas(), gameBackground.getGameBar(),
+                gameBackground.getLivesBar(), countdown);
 
         gameScene = new Scene(rootnode, SCENE_WIDTH, SCENE_HEIGHT);
 
@@ -145,9 +146,10 @@ public class LevelGenerator {
         countdown.setText((Integer.parseInt(countdown.getText()) - 1) + "");
     }
 
+    /**
+     * Called when the player has run out of lives.
+     */
     static void gameOver() {
-        timer.stop();
-
         Label label = new Label("Game Over");
         label.setFont(Font.font(48));
         label.setTextFill(Color.WHITE);
@@ -171,5 +173,25 @@ public class LevelGenerator {
             node.setLayoutY(Game.SCENE_HEIGHT / 2 - node.getBoundsInParent().getHeight() / 2);
         if(centeredHorizontally)
             node.setLayoutX(Game.SCENE_WIDTH / 2 - node.getBoundsInParent().getWidth() / 2);
+    }
+
+    /**
+     * Called when the stickfigure gets hit.
+     */
+    static void loseALife() {
+        timer.stop();
+
+        //Remove a life
+        stickFigure.loseALife();
+
+        //If dead, remove the retry button.
+        if(stickFigure.isDead()) {
+            gameBackground.getGameBar().getChildren().remove(2);
+            gameBackground.getGameBar().getChildren().add(new Label("     "));
+            gameOver();
+            return;
+        }
+
+        gameBackground.getLivesBar().getChildren().remove(0);
     }
 }

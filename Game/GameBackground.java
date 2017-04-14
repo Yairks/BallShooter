@@ -12,6 +12,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyEvent;
@@ -21,6 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+import java.awt.*;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -38,7 +40,7 @@ public class GameBackground {
     private boolean[][] whereTheWallsAre;
     public static final int IMAGE_WIDTH = 1000;
     public static final int IMAGE_HEIGHT = 1000;
-    private static HBox gameBar;
+    private static HBox gameBar, livesBar;
     public static final int CANVAS_WIDTH = 600;
     public static final int CANVAS_HEIGHT = 567;
 
@@ -46,7 +48,7 @@ public class GameBackground {
         canvas = new Canvas(Game.SCENE_WIDTH, Game.SCENE_HEIGHT);
         gc = canvas.getGraphicsContext2D();
 
-        background = new Image("file:C:\\Users\\Yair\\Documents\\StickFigure\\Background.png");
+        background = new Image(getClass().getResourceAsStream("/StickFigures/Background.png"));
 
         globalXPosition = globalYPosition = 200;
 
@@ -88,6 +90,7 @@ public class GameBackground {
         quit.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                StickFigure.setLives(3);
                 //Remove the current level before switching
                 LevelGenerator.destroyCurrentLevel();
                 Levels.setLevel(0);
@@ -112,6 +115,22 @@ public class GameBackground {
         retry.setCursor(Cursor.HAND);
 
         gameBar.getChildren().addAll(quit, levelLabel, retry);
+
+        //Create the lives bar
+        livesBar = new HBox();
+        livesBar.setSpacing(0);
+        livesBar.setPrefWidth(StickFigure.WIDTH);
+        livesBar.setPrefHeight(20);
+        livesBar.relocate(0, CANVAS_HEIGHT - StickFigure.HEIGHT / 3);
+
+        Image miniSF = new Image(getClass().getResourceAsStream("/StickFigures/Life.png"));
+
+        for(int i = 1; i < StickFigure.getLives(); i++) {
+            ImageView life = new ImageView(miniSF);
+            life.setFitHeight(StickFigure.HEIGHT / 3);
+            life.setFitWidth(StickFigure.WIDTH / 3);
+            livesBar.getChildren().add(life);
+        }
     }
 
     /**
@@ -258,6 +277,7 @@ public class GameBackground {
 
     public Canvas getCanvas() { return canvas; }
     public HBox getGameBar() { return gameBar; }
+    public HBox getLivesBar() { return livesBar; }
     public WritableImage getPartial() { return partial; }
     public Image getBackground() { return background; }
 
