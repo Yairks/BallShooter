@@ -121,9 +121,9 @@ public class GameBackground {
         livesBar.setSpacing(0);
         livesBar.setPrefWidth(StickFigure.WIDTH);
         livesBar.setPrefHeight(20);
-        livesBar.relocate(0, CANVAS_HEIGHT - StickFigure.HEIGHT / 4);
+        livesBar.relocate(0, CANVAS_HEIGHT - StickFigure.HEIGHT / 3);
 
-        Image miniSF = new Image(getClass().getResourceAsStream("/StickFigures/1.png"));
+        Image miniSF = new Image(getClass().getResourceAsStream("/StickFigures/Life.png"));
 
         for(int i = 0; i < StickFigure.getLives(); i++) {
             ImageView life = new ImageView(miniSF);
