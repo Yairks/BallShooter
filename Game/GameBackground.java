@@ -125,7 +125,7 @@ public class GameBackground {
 
         Image miniSF = new Image(getClass().getResourceAsStream("/StickFigures/Life.png"));
 
-        for(int i = 0; i < StickFigure.getLives(); i++) {
+        for(int i = 1; i < StickFigure.getLives(); i++) {
             ImageView life = new ImageView(miniSF);
             life.setFitHeight(StickFigure.HEIGHT / 3);
             life.setFitWidth(StickFigure.WIDTH / 3);

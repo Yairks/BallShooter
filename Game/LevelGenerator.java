@@ -183,13 +183,15 @@ public class LevelGenerator {
 
         //Remove a life
         stickFigure.loseALife();
-        gameBackground.getLivesBar().getChildren().remove(0);
 
         //If dead, remove the retry button.
         if(stickFigure.isDead()) {
             gameBackground.getGameBar().getChildren().remove(2);
             gameBackground.getGameBar().getChildren().add(new Label("     "));
             gameOver();
+            return;
         }
+
+        gameBackground.getLivesBar().getChildren().remove(0);
     }
 }

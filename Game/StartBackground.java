@@ -57,7 +57,7 @@ public class StartBackground {
 
         //This is how you start the game. Start with 3 lives.
         startScene.setOnMouseClicked((MouseEvent event) -> Levels.setLevel(Levels.LEVEL1));
-        StickFigure.setLives(3);
+        StickFigure.setLives(4);
 
         title.relocate((SCENE_WIDTH - title.getWidth()) / 2, SCENE_HEIGHT / 4);
         subtitle.relocate((SCENE_WIDTH - subtitle.getWidth()) / 2,
