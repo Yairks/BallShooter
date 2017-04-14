@@ -146,9 +146,10 @@ public class LevelGenerator {
         countdown.setText((Integer.parseInt(countdown.getText()) - 1) + "");
     }
 
+    /**
+     * Called when the player has run out of lives.
+     */
     static void gameOver() {
-        timer.stop();
-
         Label label = new Label("Game Over");
         label.setFont(Font.font(48));
         label.setTextFill(Color.WHITE);
@@ -175,18 +176,20 @@ public class LevelGenerator {
     }
 
     /**
-     * Called when the stickfigure gets hit
+     * Called when the stickfigure gets hit.
      */
     static void loseALife() {
+        timer.stop();
+
+        //Remove a life
         stickFigure.loseALife();
+        gameBackground.getLivesBar().getChildren().remove(0);
+
         //If dead, remove the retry button.
         if(stickFigure.isDead()) {
             gameBackground.getGameBar().getChildren().remove(2);
+            gameBackground.getGameBar().getChildren().add(new Label("     "));
+            gameOver();
         }
-        //Otherwise, remove a life ImageView
-        else {
-            gameBackground.getLivesBar().getChildren().remove(0);
-        }
-        gameOver();
     }
 }

@@ -104,10 +104,6 @@ class Timer extends AnimationTimer {
             }
         }
 
-        //Check if the player died.
-        if(stickFigure.isDead())
-            LevelGenerator.gameOver();
-
         //Remove any Enemies with no strength, unless the game is over.
         enemies.removeIf(enemy -> (enemy.getStrength() == 0) && !stickFigure.isDead());
 
